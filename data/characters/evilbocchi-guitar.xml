@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character scale="0.5" icon="evilbocchi" color="#F7A1B4" x="400" y="-100">
+	<anim name="idle" anim="pses/idle" x="0" y="0" fps="24" loop="false"/>
+	<anim name="singUP" anim="pses/up" x="260" y="180" fps="24" loop="false"/>
+	<anim name="singLEFT" anim="pses/left" x="-95" y="-66" fps="24" loop="false"/>
+	<anim name="singRIGHT" anim="pses/right" x="300" y="170" fps="24" loop="false"/>
+	<anim name="singDOWN" anim="pses/down" x="175" y="-35" fps="24" loop="false"/>
+</character>

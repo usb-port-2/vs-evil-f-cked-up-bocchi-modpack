@@ -1,0 +1,16 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.6" name="starry" folder="stages/starry/">
+	<combo y="2000"/>
+
+	<sprite name="wall" x="559" y="186" sprite="wall"/>
+	<sprite name="roof" x="0" y="0" sprite="roof"/>
+	<!-- <sprite name="thesethings" x="603" y="228" sprite="thesethings" scalex="1.1"/> !-->
+	<sprite name="back" x="330" y="407" sprite="back"/>
+
+	<dad x="1000" y="962.5" camxoffset="200"/>
+	<boyfriend x="1175" y="962.5" camxoffset="375"/>
+
+	<sprite name="fg" x="383" y="1054" sprite="fg"/>
+	<sprite name="roog" x="17" y="0" sprite="roog"/>
+
+</stage>

@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character flipX="true" color="#3C65AA">
+	<anim name="idle" anim="ryo/poses/idle" x="0" y="0" fps="12" loop="true" indices="0..6" />
+	<anim name="singUP" anim="ryo/poses/up" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singLEFT" anim="ryo/poses/left" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHT" anim="ryo/poses/right" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singDOWN" anim="ryo/poses/down" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singDOWNmiss" anim="ryo/poses/miss" x="205" y="0" fps="12" loop="false"/>
+	<anim name="singUPmiss" anim="ryo/poses/miss" x="205" y="0" fps="12" loop="false"/>
+	<anim name="singLEFTmiss" anim="ryo/poses/miss" x="205" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHTmiss" anim="ryo/poses/miss" x="205" y="0" fps="12" loop="false"/>
+</character>

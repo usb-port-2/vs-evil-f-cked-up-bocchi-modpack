@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character color="#F7A1B4">
+	<anim name="idle" anim="hitori/Poses/Idle" x="0" y="0" fps="12" loop="true"/>
+	<anim name="singUP" anim="hitori/Poses/Up" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singLEFT" anim="hitori/Poses/Left" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHT" anim="hitori/Poses/Right" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singDOWN" anim="hitori/Poses/Down" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singDOWNmiss" anim="hitori/Poses/Miss" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singUPmiss" anim="hitori/Poses/Miss" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singLEFTmiss" anim="hitori/Poses/Miss" x="0" y="0" fps="12" loop="false"/>
+	<anim name="singRIGHTmiss" anim="hitori/Poses/Miss" x="0" y="0" fps="12" loop="false"/>
+</character>
