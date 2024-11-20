@@ -2,6 +2,7 @@ import hxvlc.flixel.FlxVideoSprite;
 import openfl.display.BlendMode;
 import funkin.backend.system.macros.GitCommitMacro;
 import funkin.options.OptionsMenu;
+import funkin.menus.ModSwitchMenu;
 
 var buttons:Array<FunkinSprite> = [];
 var arrow:FunkinSprite;
@@ -62,6 +63,11 @@ function update(elapsed) {
     
     if (FlxG.mouse.wheel != 0)
         changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
+
+    if (controls.SWITCHMOD) {
+        persistentUpdate = !(persistentDraw = true);
+        openSubState(new ModSwitchMenu());
+    }
 
     arrow.y = FlxMath.lerp(arrow.y, buttons[curSelect].y + buttons[curSelect].height / 2 - arrow.height/4, 0.04);
     for (a in 0...buttons.length) {
