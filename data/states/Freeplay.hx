@@ -3,6 +3,7 @@ import hxvlc.flixel.FlxVideoSprite;
 import openfl.utils.Assets;
 import StringTools;
 import funkin.savedata.FunkinSave;
+import funkin.savedata.FunkinSave.HighscoreChange;
 
 var songList:Array<Array<String>> = [
   //["Song Name", "Composer"]
@@ -67,7 +68,7 @@ function update(elapsed) {
     if (FlxG.keys.justPressed.TAB) {
         oppMode = !oppMode;
         coopText.text = "[TAB] " + (oppMode ? "Opponent" : "Normal") + " Mode";
-        intendedAcc = FunkinSave.getSongHighscore(songList[curSelect][0], "normal", (oppMode ? [FunkinSave.COpponentMode] : [])).accuracy;
+        intendedAcc = FunkinSave.getSongHighscore(songList[curSelect][0], "normal", (oppMode ? [HighscoreChange.COpponentMode] : [])).accuracy;
     }
 
     if (controls.ACCEPT) {
@@ -91,5 +92,5 @@ function changeSelect(_:Int) {
     freeplayArt.loadGraphic(Paths.image("menus/freeplay/" + songList[curSelect][0]));
     composer.text = "Composed by " + songList[curSelect][1];
     composer.x = freeplayArt.x + freeplayArt.width / 2 - composer.width / 2;
-    intendedAcc = FunkinSave.getSongHighscore(songList[curSelect][0], "normal", (oppMode ? [FunkinSave.COpponentMode] : [])).accuracy;
+    intendedAcc = FunkinSave.getSongHighscore(songList[curSelect][0], "normal", (oppMode ? [HighscoreChange.COpponentMode] : [])).accuracy;
 }
