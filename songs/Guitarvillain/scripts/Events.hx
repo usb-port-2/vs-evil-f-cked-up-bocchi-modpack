@@ -19,6 +19,10 @@ function onDadHit(e)
     if((PlayState.opponentMode ? iconP2 : iconP1).animation.curAnim.curFrame != 1) health += (PlayState.opponentMode ? 0.02875 : -0.023);
 
 function postCreate() {
+    #if android
+    setOrientation(1024, 768, false, "LandscapeRight");
+    #end
+
     add(vid = new FlxVideoSprite()).load(Assets.getPath(Paths.file('videos/menubg.mp4')), ['input-repeat=65535']);
     vid.play();
     vid.scale.set(1.5, 1.5);
@@ -106,6 +110,9 @@ function stepHit(curStep:Int) {
                 a.colorTransform.color = FlxColor.WHITE;
         case 2328:
             if(PlayState.opponentMode){
+                #if android
+                setOrientation(1024, 768, false, 'Portrait');
+                #end
                 FlxTween.tween(camTXT, {alpha: 0}, (Conductor.stepCrochet/1000) * 16);     
                 FlxTween.tween(camHUD, {alpha: 0}, (Conductor.stepCrochet/1000) * 16, {onComplete: function(twn) {      
                     camHUD.addShader(ddd);
@@ -158,6 +165,9 @@ function stepHit(curStep:Int) {
             if(PlayState.opponentMode){
                 FlxTween.tween(camTXT, {alpha: 0}, (Conductor.stepCrochet/1000) * 11);
                 FlxTween.tween(camHUD, {alpha: 0}, (Conductor.stepCrochet/1000) * 11, {onComplete: function(twn) {
+                    #if android
+                    setOrientation(1024, 768, false, "LandscapeRight");
+                    #end
                     camHUD.removeShader(ddd);
                     camHUD.downscroll = Options.downscroll;
                     iconP1.visible = iconP2.visible = !(gradient.visible = camTXT.downscroll = false);
@@ -231,3 +241,8 @@ function onSubstateOpen() {
 function onPlayerMiss(e)
     if (e.note.noteType == "Evil Notes")
         health = 0;
+
+#if android
+function onSongEnd()
+    setOrientation(1024, 768, false, "LandscapeRight");
+#end

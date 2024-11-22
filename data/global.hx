@@ -3,6 +3,13 @@ import funkin.backend.utils.ShaderResizeFix;
 import funkin.menus.BetaWarningState;
 import openfl.system.Capabilities;
 import funkin.backend.utils.WindowUtils;
+#if android
+import lime.system.JNI;
+#end
+
+#if android
+public static var setOrientation:Dynamic = JNI.createStaticMethod('org/libsdl/app/SDLActivity', 'setOrientation', '(IIZLjava/lang/String;)V');
+#end
 
 var redirectStates:Map<FlxState, String> = [
 	BetaWarningState => "Disclaimer",
