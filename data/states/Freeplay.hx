@@ -42,12 +42,16 @@ function create() {
     }
 
     add(scoreBG = new FunkinSprite(FlxG.width * 0.7 - 6, 0).makeGraphic(1, 1, 0xFF000000));
-    add(coopText = new FunkinText(FlxG.width * 0.7, 38, 1024 - FlxG.width * 0.7, "[TAB] Normal Mode", 24, true)).antialiasing = Options.antialiasing;
+    add(coopText = new FunkinText(FlxG.width * 0.7, 38, 1024 - FlxG.width * 0.7, (#if TOUCH_CONTROLS (controls.touchC) ? "[C] " : #end "[TAB] ") + "Normal Mode", 24, true)).antialiasing = Options.antialiasing;
     add(accuracyText = new FunkinText(FlxG.width * 0.7, 5, 1024 - FlxG.width * 0.7, "", 32, true)).antialiasing = Options.antialiasing;
 
     add(composer = new FunkinText(0, freeplayArt.y + freeplayArt.height + 10, 0, "By Rio", 24, true)).antialiasing = Options.antialiasing;
 
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("UP_DOWN", "A_B_C");
+    #end
 }
 
 function update(elapsed) {
@@ -60,14 +64,14 @@ function update(elapsed) {
     accuracyText.text = "Accuracy:" + CoolUtil.quantize(lerpAcc * 100, 100) + "%";
 
     if (FlxG.mouse.wheel != 0)
-        changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
+        changeSelect(-FlxG.mouse.wheel);
         
     if (controls.BACK)
         FlxG.switchState(new ModState("Menus"));
 
-    if (FlxG.keys.justPressed.TAB) {
+    if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.TAB) {
         oppMode = !oppMode;
-        coopText.text = "[TAB] " + (oppMode ? "Opponent" : "Normal") + " Mode";
+        coopText.text = (#if TOUCH_CONTROLS (controls.touchC) ? "[C] " : #end "[TAB] ") + (oppMode ? "Opponent" : "Normal") + " Mode";
         intendedAcc = FunkinSave.getSongHighscore(songList[curSelect][0], "normal", (oppMode ? [HighscoreChange.COpponentMode] : [])).accuracy;
     }
 

@@ -44,11 +44,15 @@ function create() {
     add(descTxt).antialiasing = Options.antialiasing;
     descTxt.alignment = "center";
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("UP_DOWN", "A_B");
+    #end
 }
 
 function update(elapsed) {
     if (FlxG.mouse.wheel != 0)
-        changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
+        changeSelect(-FlxG.mouse.wheel);
         
     if (controls.BACK)
         FlxG.switchState(new ModState("Menus"));

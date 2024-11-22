@@ -1,7 +1,5 @@
 import hxvlc.flixel.FlxVideoSprite;
-import Sys;
-import StringTools;
-import sys.FileSystem;
+import lime.system.System;
 
 var curSelect:Int = 0;
 var gallery:Array<Array<String>> = [
@@ -76,6 +74,10 @@ function create() {
         arrow.x = (a == 0 ? 50 : FlxG.width - 50 - arrow.width);
     }
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("LEFT_RIGHT", "A_B_C");
+    #end
 }
 
 function update(elapsed) {        
@@ -88,8 +90,8 @@ function update(elapsed) {
     if (controls.ACCEPT && gallery[curSelect][2] != null)
         CoolUtil.openURL(gallery[curSelect][2]);
     
-    if (FlxG.keys.justPressed.TAB)
-        Sys.command("\"" + FileSystem.fullPath(".") + "/" + Paths.image("menus/gallery/" + gallery[curSelect][0]) + "\"");
+    if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.TAB)
+        System.openFile(Assets.getPath(Paths.image("menus/gallery/" + gallery[curSelect][0])));
 
     for (a in 0...images.length)
         images[a].x = FlxMath.lerp(images[a].x, FlxG.width / 2 * (a + 1 - curSelect) - images[a].width / 2, 0.04);
@@ -107,5 +109,8 @@ function changeSelect(_:Int) {
     descTxt.y = 634 + (768 - 634) / 2 - descTxt.height / 2 - 5;
     FlxTween.tween(descTxt, {y: 634 + (768 - 634) / 2 - descTxt.height / 2}, 0.2);
 
-    pressButtonTo.text = "Press [TAB] to open image" + (gallery[curSelect][2] != null ? " | Press ENTER to visit link" : "");
+    var tab:String = #if TOUCH_CONTROLS (controls.touchC) ? "C" : #end "TAB";
+    var enter:String = #if TOUCH_CONTROLS (controls.touchC) ? "A" : #end "ENTER";
+
+    pressButtonTo.text = "Press [" + tab + "] to open image" + (gallery[curSelect][2] != null ? " | Press " + enter + " to visit link" : "");
 }
