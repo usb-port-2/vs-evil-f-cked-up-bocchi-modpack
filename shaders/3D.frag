@@ -1,14 +1,13 @@
 #pragma header
 #define PI 3.1415926538
 
-uniform float xrot = 0.0;
-uniform float yrot = 0.0;
-uniform float zrot = 0.0;
-uniform float xpos = 0.0;
-uniform float ypos = 0.0;
-uniform float zpos = 0.0;
+uniform float xrot;
+uniform float yrot;
+uniform float zrot;
+uniform float xpos;
+uniform float ypos;
+uniform float zpos;
 
-	float alph = 0;
 float plane( in vec3 norm, in vec3 po, in vec3 ro, in vec3 rd ) {
     float de = dot(norm, rd);
     de = sign(de)*max( abs(de), 0.001);
