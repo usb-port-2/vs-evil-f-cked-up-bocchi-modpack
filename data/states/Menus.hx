@@ -67,7 +67,7 @@ function update(elapsed) {
         changeSelect(controls.UP_P ? -1 : 1);
     
     if (FlxG.mouse.wheel != 0)
-        changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
+        changeSelect(-FlxG.mouse.wheel);
 
     if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end controls.SWITCHMOD) {
         persistentUpdate = !(persistentDraw = true);

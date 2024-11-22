@@ -64,7 +64,7 @@ function update(elapsed) {
     accuracyText.text = "Accuracy:" + CoolUtil.quantize(lerpAcc * 100, 100) + "%";
 
     if (FlxG.mouse.wheel != 0)
-        changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
+        changeSelect(-FlxG.mouse.wheel);
         
     if (controls.BACK)
         FlxG.switchState(new ModState("Menus"));

@@ -1,7 +1,5 @@
 import hxvlc.flixel.FlxVideoSprite;
-import Sys;
-import StringTools;
-import sys.FileSystem;
+import lime.system.System;
 
 var curSelect:Int = 0;
 var gallery:Array<Array<String>> = [
@@ -93,7 +91,7 @@ function update(elapsed) {
         CoolUtil.openURL(gallery[curSelect][2]);
     
     if (FlxG.keys.justPressed.TAB)
-        Sys.command("\"" + FileSystem.fullPath(".") + "/" + Paths.image("menus/gallery/" + gallery[curSelect][0]) + "\"");
+        System.openFile(Assets.getPath(Paths.image("menus/gallery/" + gallery[curSelect][0])));
 
     for (a in 0...images.length)
         images[a].x = FlxMath.lerp(images[a].x, FlxG.width / 2 * (a + 1 - curSelect) - images[a].width / 2, 0.04);
