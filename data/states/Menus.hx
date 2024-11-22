@@ -47,6 +47,11 @@ function create() {
     
     evil.antialiasing = vid.antialiasing = arrow.antialiasing = infoTxt.antialiasing = Options.antialiasing;
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("UP_DOWN", "A_B_C");
+    addVirtualPadCamera();
+    #end
 }
 
 function update(elapsed) {
@@ -64,7 +69,7 @@ function update(elapsed) {
     if (FlxG.mouse.wheel != 0)
         changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
 
-    if (controls.SWITCHMOD) {
+    if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end controls.SWITCHMOD) {
         persistentUpdate = !(persistentDraw = true);
         openSubState(new ModSwitchMenu());
     }

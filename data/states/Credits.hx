@@ -44,6 +44,10 @@ function create() {
     add(descTxt).antialiasing = Options.antialiasing;
     descTxt.alignment = "center";
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("UP_DOWN", "A_B");
+    #end
 }
 
 function update(elapsed) {

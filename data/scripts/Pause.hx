@@ -30,6 +30,11 @@ function create(e){
     leftCursor.y = rightCursor.y = menuItems[0].y + menuItems[0].height/2 - leftCursor.height/2;
     leftCursor.x = menuItems[0].x - leftCursor.width - 5;
     rightCursor.x = menuItems[0].x + menuItems[0].width + rightCursor.width - 7.5;
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("UP_DOWN", "A");
+    addVirtualPadCamera();
+    #end
 }
 
 function update(){

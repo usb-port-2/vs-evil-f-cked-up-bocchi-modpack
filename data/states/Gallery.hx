@@ -76,6 +76,10 @@ function create() {
         arrow.x = (a == 0 ? 50 : FlxG.width - 50 - arrow.width);
     }
     changeSelect(0);
+
+    #if TOUCH_CONTROLS
+    addVirtualPad("LEFT_RIGHT", "A_B_C");
+    #end
 }
 
 function update(elapsed) {        
@@ -107,5 +111,8 @@ function changeSelect(_:Int) {
     descTxt.y = 634 + (768 - 634) / 2 - descTxt.height / 2 - 5;
     FlxTween.tween(descTxt, {y: 634 + (768 - 634) / 2 - descTxt.height / 2}, 0.2);
 
-    pressButtonTo.text = "Press [TAB] to open image" + (gallery[curSelect][2] != null ? " | Press ENTER to visit link" : "");
+    var tab:String = #if TOUCH_CONTROLS (controls.touchC) ? "C" : #end "TAB";
+    var enter:String = #if TOUCH_CONTROLS (controls.touchC) ? "A" : #end "ENTER";
+
+    pressButtonTo.text = "Press [" + tab + "] to open image" + (gallery[curSelect][2] != null ? " | Press " + enter + " to visit link" : "");
 }

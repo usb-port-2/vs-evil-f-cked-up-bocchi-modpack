@@ -17,11 +17,10 @@ function new(){
 	Framerate.codenameBuildField.visible = FlxG.stage.window.resizable = false;
 }
 
-function preStateSwitch() {
-		for (redirectState in redirectStates.keys()) 
-			if (Std.isOfType(FlxG.game._requestedState, redirectState)) 
-				FlxG.game._requestedState = new ModState(redirectStates.get(redirectState));
-	}
+function preStateSwitch()
+	for (redirectState in redirectStates.keys()) 
+		if (Std.isOfType(FlxG.game._requestedState, redirectState)) 
+			FlxG.game._requestedState = new ModState(redirectStates.get(redirectState));}
 
 function postStateSwitch()
 	if(Framerate.codenameBuildField.visible == true) Framerate.codenameBuildField.visible = false;

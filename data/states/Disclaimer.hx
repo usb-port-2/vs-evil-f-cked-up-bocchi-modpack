@@ -3,11 +3,14 @@ import flixel.text.FlxTextFormatMarkerPair;
 import flixel.text.FlxTextFormat;
 import openfl.display.BlendMode;
 import hxvlc.flixel.FlxVideoSprite;
+#if TOUCH_CONTROLS
+import mobile.funkin.backend.utils.TouchUtil;
+#end
 
 var texts:Array<FunkinText> = [];
 
 function postCreate() {
-    Framerate.debugMode = 0;
+    Framerate.debugMode = #if mobile 1 #else 0 #end;
 
     add(new Alphabet(FlxG.width/2, 175, "Quick Message", true)).screenCenter(FlxAxes.X);
 
@@ -15,7 +18,7 @@ function postCreate() {
         "This mod is still a *demo*, with *more content planned*.",
         "\nThis is a fan creation based off of the anime \"*Bocchi The Rock*\", which we recommend you watch.",
         "We *do not support* the original aethos creator or their actions.",
-        "\n\n\nPress ENTER to begin"
+        "\n\n\n" + #if TOUCH_CONTROLS ((controls.touchC) ? "Tap Your Screen to begin" : #end "Press ENTER to begin")
     ]) {
         texts.push(new FunkinText(0, 275 + (num != 0 ? texts[num - 1].height : 40) * num, FlxG.width - 32, "", 32, true));
         texts[num].alignment = "center";
@@ -33,5 +36,5 @@ function postCreate() {
 
 
 function update() {
-    if(controls.ACCEPT) FlxG.switchState(new ModState("Menus"));
+    if(#if TOUCH_CONTROLS TouchUtil.justPressed || #end controls.ACCEPT) FlxG.switchState(new ModState("Menus"));
 }
