@@ -13,7 +13,7 @@ var bnw:CustomShader = new CustomShader("black n white");
 var titlecard:FunkinSprite = new FunkinSprite().loadGraphic(Paths.image("game/titlecards/" + SONG.meta.name));
 
 function postCreate(){
-    canPause = canDie = allowGitaroo = false;
+    canPause = allowGitaroo = false;
     FlxG.cameras.add(camTXT, false);
     camTXT.bgColor = camHUD.bgColor;
     for(num => a in [iconP1, iconP2, healthBar, healthBarBG, accuracyTxt, timerTxt, scoreTxt, missesTxt]){
@@ -50,7 +50,7 @@ function postUpdate(elapsed) {
 
 function stepHit(curStep:Int)
     if (curStep == 0) {
-        canPause = canDie = true;
+        canPause = true;
         FlxTween.tween(titlecard, {alpha: 0}, (Conductor.stepCrochet/1000) * 8, {onComplete: (_) -> remove(titlecard.destroy())}); 
     }
 
