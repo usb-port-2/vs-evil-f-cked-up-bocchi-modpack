@@ -70,6 +70,9 @@ function update(elapsed) {
         changeSelect(FlxG.mouse.wheel == -1 ? 1 : -1);
 
     if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end controls.SWITCHMOD) {
+        #if TOUCH_CONTROLS
+        removeVirtualPad();
+        #end
         persistentUpdate = !(persistentDraw = true);
         openSubState(new ModSwitchMenu());
     }
@@ -87,3 +90,12 @@ function changeSelect(_:Int) {
     CoolUtil.playMenuSFX();
     curSelect = FlxMath.wrap(curSelect + _, 0, buttons.length - 1);
 }
+
+#if TOUCH_CONTROLS
+function closeSubState()
+{
+    addVirtualPad("UP_DOWN", "A_B_C");
+    addVirtualPadCamera();
+}
+#end
+    
