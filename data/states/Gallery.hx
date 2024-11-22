@@ -90,7 +90,7 @@ function update(elapsed) {
     if (controls.ACCEPT && gallery[curSelect][2] != null)
         CoolUtil.openURL(gallery[curSelect][2]);
     
-    if (FlxG.keys.justPressed.TAB)
+    if (#if TOUCH_CONTROLS virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.TAB)
         System.openFile(Assets.getPath(Paths.image("menus/gallery/" + gallery[curSelect][0])));
 
     for (a in 0...images.length)
