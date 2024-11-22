@@ -18,7 +18,7 @@ function postCreate() {
         "This mod is still a *demo*, with *more content planned*.",
         "\nThis is a fan creation based off of the anime \"*Bocchi The Rock*\", which we recommend you watch.",
         "We *do not support* the original aethos creator or their actions.",
-        "\n\n\n" + #if TOUCH_CONTROLS ((controls.touchC) ? "Tap Your Screen to begin" : #end "Press ENTER to begin")
+        "\n\n\n" + (#if TOUCH_CONTROLS (controls.touchC) ? "Tap Your Screen to begin" : #end "Press ENTER to begin")
     ]) {
         texts.push(new FunkinText(0, 275 + (num != 0 ? texts[num - 1].height : 40) * num, FlxG.width - 32, "", 32, true));
         texts[num].alignment = "center";
