@@ -242,7 +242,9 @@ function onPlayerMiss(e)
     if (e.note.noteType == "Evil Notes")
         health = 0;
 
-#if android
 function onSongEnd()
+{
+    #if android
     setOrientation(1024, 768, false, "LandscapeRight");
-#end
+    #end
+}
