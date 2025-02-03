@@ -1,0 +1,1 @@
+<!DOCTYPE codename-engine-character><character scale="0.5" icon="evilbocchi" color="#F7A1B4" x="400" y="-100"><anim name="idle" anim="pses/idle"/><anim name="singUP" anim="pses/up" x="260" y="180"/><anim name="singLEFT" anim="pses/left" x="-95" y="-66"/><anim name="singRIGHT" anim="pses/right" x="300" y="170"/><anim name="singDOWN" anim="pses/down" x="175" y="-35"/></character>
